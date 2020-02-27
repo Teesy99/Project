@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "611072236913",
+    "firebase_url": "https://wssfirebaseproject-bc117.firebaseio.com",
+    "project_id": "wssfirebaseproject-bc117",
+    "storage_bucket": "wssfirebaseproject-bc117.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611072236913:android:b02eb6194e6cc6f8c7ead0",
+        "android_client_info": {
+          "package_name": "com.test.watersupply"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611072236913-rjitimmolgcpa4uqdup52d0nihh8a358.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwL52Ae-v87DbbkljyfR6aXWxxUhT29_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611072236913-rjitimmolgcpa4uqdup52d0nihh8a358.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
