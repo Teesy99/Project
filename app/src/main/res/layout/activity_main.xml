@@ -34,7 +34,20 @@
                 android:layout_width="100px"
                 android:layout_height="100px"
                 android:layout_marginTop="276dp"
-                android:text="BUTTON"
+                android:text="S1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.517"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView">
+
+            </Button>
+
+            <Button
+                android:id="@+id/B2"
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:layout_marginTop="412dp"
+                android:text="S2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.517"
                 app:layout_constraintStart_toStartOf="parent"

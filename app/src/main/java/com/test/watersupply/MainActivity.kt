@@ -22,9 +22,17 @@ class MainActivity : AppCompatActivity() {
         dice_img.setImageResource(R.drawable.water_distribution_pic1)
 
         val b1 : Button = findViewById(R.id.B1)
+        val b2 : Button = findViewById(R.id.B2)
+
+        val intent= Intent(this, Show_data::class.java)
+
         b1.setOnClickListener {
-            val intent= Intent(this, Show_data::class.java)
-            intent.putExtra("Username", "Name")
+            intent.putExtra("Username", "S1")
+            startActivity(intent)
+        }
+
+        b2.setOnClickListener {
+            intent.putExtra("Username", "S2")
             startActivity(intent)
         }
 

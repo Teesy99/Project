@@ -1,27 +1,99 @@
 package com.test.watersupply
 
+import android.app.ProgressDialog.show
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
+import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import org.w3c.dom.Text
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
+
+public class data(){
+
+
+}
 
 
 class Show_data : AppCompatActivity()  {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_data)
 
+        val database = FirebaseFirestore.getInstance()
         var strUser: String = intent.getStringExtra("Username")
 
-        val database = FirebaseFirestore.getInstance()
+        val tbox : TextView = findViewById(R.id.textView)
+        val button : Button = findViewById(R.id.button1)
+        val grid_date : ListView = findViewById(R.id.date1)
+        val grid_time : ListView = findViewById(R.id.time1)
+        val item :  ArrayAdapter<String>
+
+
+        tbox.text= "Data of "+strUser
+
+
         //val Refer = database.getReference("sensor")
+
+        button.setOnClickListener {
+            upload()
+        }
+
+
+
+
+        database.collection(strUser)
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    Log.w("TAG", "Listen failed.", e)
+                    return@addSnapshotListener
+                }
+
+                val cities = ArrayList<String>()
+                for (doc in value!!) {
+                    doc.getString("da")?.let {
+                        cities.add(it)
+                    }
+                }
+                val time1 = ArrayList<String>()
+                for (doc in value!!) {
+                    doc.getString("ti")?.let {
+                        time1.add(it)
+                    }
+                }
+
+                val c= ArrayList<data>()
+
+               var array :ArrayAdapter<String>
+                array = ArrayAdapter(this,android.R.layout.simple_list_item_1, cities)
+                grid_date.setAdapter(array)
+
+                var array_time :ArrayAdapter<String>
+                array_time = ArrayAdapter(this,android.R.layout.simple_list_item_1, time1)
+                grid_time.setAdapter(array_time)
+
+            }
+
+
+
+    }
+
+
+
+    fun upload(){
+        val database = FirebaseFirestore.getInstance()
+        var strUser: String = intent.getStringExtra("Username")
 
         val c = Calendar.getInstance()
         val dd = c.get(Calendar.DAY_OF_MONTH)
@@ -34,10 +106,10 @@ class Show_data : AppCompatActivity()  {
         val  p :String="/"
         val t : String=":"
         var m : String= if(mm < 10) {
-             "0"+ mm.toString()
+            "0"+ mm.toString()
         }
         else {
-              mm.toString()
+            mm.toString()
         }
 
         val da : String =  yy.toString()+ p + m + p + dd.toString()
@@ -55,15 +127,19 @@ class Show_data : AppCompatActivity()  {
             "temp" to temp
         )
 
-        database.collection("sensor")
+
+        database.collection(strUser)
             .add(city)
 
 
-        //val to: String? = Refer.push().key
+    }
 
-       // val data=sensor_data(ti,da,press,temp)
+    fun show(){
+        val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val ref=db.collection("S3")
+        ref.get()
 
-        //Refer.child(to.toString()).setValue(data)
+
 
     }
 }
