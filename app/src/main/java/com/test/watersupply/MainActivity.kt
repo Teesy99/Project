@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val dice_img : ImageView = findViewById(R.id.imageView)
-        dice_img.setImageResource(R.drawable.water_distribution_pic1)
+        val dice : ImageView = findViewById(R.id.imageView)
+        dice.setImageResource(R.drawable.water_distribution_pic1)
 
         val b1 : Button = findViewById(R.id.B1)
         val b2 : Button = findViewById(R.id.B2)

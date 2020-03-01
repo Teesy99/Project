@@ -23,8 +23,7 @@ public class data(){
 }
 
 
-class Show_data : AppCompatActivity()  {
-
+class Show_data : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,14 +33,14 @@ class Show_data : AppCompatActivity()  {
         val database = FirebaseFirestore.getInstance()
         var strUser: String = intent.getStringExtra("Username")
 
-        val tbox : TextView = findViewById(R.id.textView)
-        val button : Button = findViewById(R.id.button1)
-        val grid_date : ListView = findViewById(R.id.date1)
-        val grid_time : ListView = findViewById(R.id.time1)
-        val item :  ArrayAdapter<String>
+        val tbox: TextView = findViewById(R.id.textView)
+        val button: Button = findViewById(R.id.button)
+        val gridview : GridView = findViewById(R.id.gridview)
+        // val grid_time : ListView = findViewById(R.id.time1)
 
 
-        tbox.text= "Data of "+strUser
+
+        tbox.text = "Data of " + strUser
 
 
         //val Refer = database.getReference("sensor")
@@ -66,6 +65,7 @@ class Show_data : AppCompatActivity()  {
                         cities.add(it)
                     }
                 }
+
                 val time1 = ArrayList<String>()
                 for (doc in value!!) {
                     doc.getString("ti")?.let {
@@ -73,51 +73,53 @@ class Show_data : AppCompatActivity()  {
                     }
                 }
 
-                val c= ArrayList<data>()
+                //val gridview = findViewById<GridView>(R.id.gridView)
 
-               var array :ArrayAdapter<String>
-                array = ArrayAdapter(this,android.R.layout.simple_list_item_1, cities)
-                grid_date.setAdapter(array)
 
-                var array_time :ArrayAdapter<String>
-                array_time = ArrayAdapter(this,android.R.layout.simple_list_item_1, time1)
-                grid_time.setAdapter(array_time)
+                val array = arrayOfNulls<String>(cities.size)
+
+                val arr:Array<String> = cities.toArray(array)
+
+                val adapter = data_adaptor(this, R.layout.data,cities)
+                gridview.adapter = adapter
+
+
+
+
 
             }
-
-
 
     }
 
 
 
-    fun upload(){
+
+    fun upload() {
         val database = FirebaseFirestore.getInstance()
         var strUser: String = intent.getStringExtra("Username")
 
         val c = Calendar.getInstance()
         val dd = c.get(Calendar.DAY_OF_MONTH)
-        val mm = c.get(Calendar.MONTH)+1
-        val yy= c.get(Calendar.YEAR)
+        val mm = c.get(Calendar.MONTH) + 1
+        val yy = c.get(Calendar.YEAR)
 
         val h = c.get(Calendar.HOUR_OF_DAY)
         val min = c.get(Calendar.MINUTE)
         val sec = c.get(Calendar.SECOND)
-        val  p :String="/"
-        val t : String=":"
-        var m : String= if(mm < 10) {
-            "0"+ mm.toString()
-        }
-        else {
+        val p: String = "/"
+        val t: String = ":"
+        var m: String = if (mm < 10) {
+            "0" + mm.toString()
+        } else {
             mm.toString()
         }
 
-        val da : String =  yy.toString()+ p + m + p + dd.toString()
+        val da: String = yy.toString() + p + m + p + dd.toString()
 
-        val ti : String = h.toString() + t + min.toString()+ t + sec.toString()
+        val ti: String = h.toString() + t + min.toString() + t + sec.toString()
 
-        val press: Int=9
-        val temp : Int= Random.nextInt()%1000
+        val press: Int = 9
+        val temp: Int = Random.nextInt() % 1000
 
 
         val city = hashMapOf(
@@ -134,13 +136,12 @@ class Show_data : AppCompatActivity()  {
 
     }
 
-    fun show(){
+    fun show() {
         val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-        val ref=db.collection("S3")
+        val ref = db.collection("S3")
         ref.get()
-
-
-
     }
+
 }
+
 
