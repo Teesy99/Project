@@ -14,8 +14,8 @@ internal class data_adaptor internal constructor(context: Context, private val r
     }
 
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        var convertView=convertView
+    override fun getView(position: Int, convertview: View?, parent: ViewGroup): View {
+        var convertView=convertview
         val holder : data_holder
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(resource, null)
@@ -29,7 +29,7 @@ internal class data_adaptor internal constructor(context: Context, private val r
             holder = convertView.tag as data_holder
         }
 
-        holder.date1!!.setText("dffgdf")
+        holder.date1!!.text="gdhgfjhgk"
         holder.time1!!.text= "aesrgdthfjg" //this.itemList!![position]
         holder.press1!!.text= "12345"  //this.itemList!![position]
         holder.temp1!!.text= "dfghbb" //this.itemList!![position]
@@ -37,12 +37,8 @@ internal class data_adaptor internal constructor(context: Context, private val r
         return convertView
     }
 
-    internal class data_holder{
-        var date1: TextView? = null
-        var time1 : TextView? = null
-        var temp1 : TextView? = null
-        var press1 : TextView? = null
-    }
+    internal class data_holder(var date1: TextView? = null, var time1 : TextView? = null , var temp1 : TextView? = null , var press1 : TextView? = null){}
 
-    class  data(var date: String, var time: String, var temp :String, var press : String)
+
+
 }
