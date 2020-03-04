@@ -1,6 +1,5 @@
 package com.test.watersupply
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -12,11 +11,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
-
-public class data(){
-
-
-}
 
 
 class Show_data : AppCompatActivity() {
@@ -42,9 +36,9 @@ class Show_data : AppCompatActivity() {
         //val Refer = database.getReference("sensor")
 
         button.setOnClickListener {
-            //upload()
-            val intent1= Intent(this, Water_supply_register::class.java)
-            startActivity(intent1)
+            upload()
+            /*val intent1= Intent(this, Water_supply_register::class.java)
+            startActivity(intent1)*/
         }
 
 

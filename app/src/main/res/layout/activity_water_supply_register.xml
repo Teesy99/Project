@@ -7,8 +7,12 @@
     tools:context=".Water_supply_register">
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="408dp"
+        android:layout_height="945dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -84,7 +88,7 @@
                 app:layout_constraintVertical_bias="0.401" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/edit_button"
                 android:layout_width="216dp"
                 android:layout_height="54dp"
                 android:layout_marginBottom="172dp"
@@ -97,7 +101,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/edit_login"
                 android:layout_width="194dp"
                 android:layout_height="35dp"
                 android:background="#EDF3F2"
@@ -110,7 +114,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.543"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button"
+                app:layout_constraintTop_toBottomOf="@+id/edit_button"
                 app:layout_constraintVertical_bias="0.248" />
 
             <TextView
